@@ -9,8 +9,14 @@ searchbox.addEventListener('keypress', setQuery);
 function setQuery(evt) {
   if(evt.keyCode === 13){
     getResults(searchbox.value);
+    registerSW();
     //console.log(searchbox.value); 
   }
+}
+
+function onLoad(lon, lat) {
+  fetch(`${api.baseUrl}weather?lat={lat}&lon={lon}&appid=${api.key}`)
+  .then()
 }
 
 function getResults(query) {
@@ -49,4 +55,14 @@ function dateBuilder(d){
   let year = d.getFullYear();
 
   return `${day} ${date} ${month} ${year}`;
+}
+
+async function registerSW(){
+  if('serviceWorker' in navigator) {
+    try { 
+      await navigator.serviceWorker.register('./sw.js');
+    } catch (e) {
+      console.log('SW registeration failed');
+    }
+  }
 }
