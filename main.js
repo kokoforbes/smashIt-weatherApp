@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
       long = position.coords.longitude;
       lat = position.coords.latitude;
 
-      const locApi = `${api.baseUrl}weather?lat=${lat}&lon=${long}&appid=${api.key}`;
+      const locApi = `${api.baseUrl}weather?lat=${lat}&lon=${long}&units=metric&APPID=${api.key}`;
 
       fetch(locApi)
       .then((weather) => {
