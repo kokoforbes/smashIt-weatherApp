@@ -1,4 +1,4 @@
-const cacheNamem = 'weather-v1';
+const cacheName = 'weather-v1';
 
 const staticAssets = [
   './',
@@ -35,7 +35,7 @@ async function cacheFirst(req) {
   return cached || fetch(req); 
 }
 
-async function networkAndCache((req) {
+async function networkAndCache(req) {
   const cache = await caches.open(cacheName);
   try {
     const fresh = await fetch(req);
