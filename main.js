@@ -21,6 +21,8 @@ window.addEventListener("load", () => {
       })
       .then(displayResults);
     });
+  } else {
+    JSON.parse(localStorage.getItem("result")).then(displayResults);
   }
 });
 
@@ -38,6 +40,7 @@ function setQuery(evt) {
 function getResults(query) {
   fetch(`${api.baseUrl}weather?q=${query}&units=metric&APPID=${api.key}`)
     .then((weather) => {
+      localStorage.setItem("result", JSON.stringify(weather));
       return weather.json();
     })
     .then(displayResults);
