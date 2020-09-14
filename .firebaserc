@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "smashit-weatherapp",
+    "development": "smashit-weatherapp"
+  }
+}
